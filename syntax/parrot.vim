@@ -1,6 +1,6 @@
 " Vim syntax file for Parrot Assembly Code
 "
-" Version : 0.1
+" Version : 0.2
 " Based on Parrot 0.10
 " 
 " Maintainer : Kevin Harris <kharris@satlug.org>
@@ -32,7 +32,7 @@ syntax match ParrotNumericRegister /[IN][0-9]\+/
 "syntax keyword ParrotPerlClasses \.PerlUndef \.PerlInt \.PerlNum \.PerlString \.PerlArray \.PerlHash .PerlHash
 syntax match ParrotPerlClasses /\.Perl.*/
 
-"syntax region ParrotString start=/"/ skip=/\\"/ end=/"/
+syntax region ParrotString start=/"/ skip=/\\"/ end=/"/ oneline
 "syntax match ParrotNumber /\ [0-9]\+/
 
 syntax match decNumber		"0\+[1-7]\=[\t\n$,; ]"
@@ -44,7 +44,7 @@ syntax match binNumber		"0[bB][0-1]*"
 " Op-codes
 syntax keyword ParrotControlOps if jump branch jsr bsr ret end unless
 
-syntax keyword ParrotDataManipulatorOps new set clone tostring add sub mul div inc dec length concat repeat substr eq mod ne chopn
+syntax keyword ParrotDataManipulatorOps new set clone tostring add sub mul div inc dec length concat repeat substr eq mod ne chopn 
 
 syntax keyword ParrotTransMathOps sin cos tan sec atan atan2 asin acos asec cosh sinh tanh sech log2 log10 ln log pow exp
 
@@ -71,14 +71,12 @@ syntax keyword ParrotKeyOps new_key clone_key size_key toss_key ke_type ke_value
 syntax keyword ParrotSymbolicOps setline setfile setpackage getline getfile getpackage
 
 syntax keyword ParrotMiscOps index pack
-" You are here, Kevin. Just a matter of picking colors for op-codes now. 
-" Rex lives.
 
 if !exists("did_Parrot_syntax_inits")
     let did_Parrot_syntax_inits=1
     highlight link ParrotComment Comment
     highlight link ParrotLabel Special
-"	highlight link ParrotString String
+	highlight link ParrotString String
 "	highlight link ParrotNumber Number
     highlight link decNumber Number
     highlight link decNumber Number
